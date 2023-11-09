@@ -24,8 +24,8 @@ RUN rm apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN chmod -R 777 /usr/local/tomcat
 
-RUN mkdir -p $CATALINA_HOME/conf/Catalina/localhost && touch $CATALINA_HOME/conf/Catalina/localhost/tomcat.xml
+RUN mkdir -p $CATALINA_HOME/conf/Catalina/localhost && touch $CATALINA_HOME/conf/Catalina/localhost/system.xml
 
-RUN echo "<Context path=\"/tomcat\" />" > $CATALINA_HOME/conf/Catalina/localhost/tomcat.xml
+RUN echo "<Context path=\"/tomcat\" />" > $CATALINA_HOME/conf/Catalina/localhost/system.xml
 
 ENTRYPOINT ["catalina.sh", "run"]
