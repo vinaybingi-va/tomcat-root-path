@@ -15,7 +15,7 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-9/v$TOMCAT_VERSION/bin/ap
 # Tomcat installation
 RUN tar -zxvf apache-tomcat-$TOMCAT_VERSION.tar.gz --strip-components 1 -C /usr/local/tomcat
 ENV CATALINA_HOME=/usr/local/tomcat
-ENV PATH=$PATH:$CATALINA_HOME/bin/
+ENV PATH=$PATH:$CATALINA_HOME/bin
 
 RUN rm apache-tomcat-$TOMCAT_VERSION.tar.gz
 
@@ -27,4 +27,4 @@ RUN echo "<Context path=\"/tomcat\" />" > $CATALINA_HOME/conf/Catalina/localhost
 
 COPY /tomcat/tomcat.xml $CATALINA_HOME/conf/Catalina/localhost/
 
-ENTRYPOINT ["catalina.sh", "start"]
+ENTRYPOINT ["catalina.sh", "run"]
