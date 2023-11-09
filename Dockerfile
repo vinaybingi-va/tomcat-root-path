@@ -25,8 +25,4 @@ RUN mkdir -p $CATALINA_HOME/conf/Catalina/localhost && touch $CATALINA_HOME/conf
 
 RUN echo "<Context path=\"/tomcat\" />" > $CATALINA_HOME/conf/Catalina/localhost/tomcat.xml
 
-RUN rm -rf $CATALINA_HOME/webapps/ROOT/
-
-#COPY /tomcat/tomcat.xml $CATALINA_HOME/conf/Catalina/localhost/
-
 ENTRYPOINT ["catalina.sh", "run"]
