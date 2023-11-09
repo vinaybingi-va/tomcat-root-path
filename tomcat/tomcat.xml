@@ -1,0 +1,2 @@
+<!-- Lets you access default tomcat homepage on /tomcat path -->
+<Context path="/tomcat" />
