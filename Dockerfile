@@ -17,10 +17,14 @@ RUN tar -zxvf apache-tomcat-$TOMCAT_VERSION.tar.gz --strip-components 1 -C /usr/
 ENV CATALINA_HOME=/usr/local/tomcat
 ENV PATH=$PATH:$CATALINA_HOME/bin/
 
+RUN rm apache-tomcat-$TOMCAT_VERSION.tar.gz
+
+RUN chmod -R 777 /usr/local/tomcat
+
 RUN mkdir -p $CATALINA_HOME/conf/Catalina/localhost && touch $CATALINA_HOME/conf/Catalina/localhost/tomcat.xml
 
 RUN echo "<Context path=\"/tomcat\" />" > $CATALINA_HOME/conf/Catalina/localhost/tomcat.xml
 
 COPY /tomcat/tomcat.xml $CATALINA_HOME/conf/Catalina/localhost/
 
-CMD ["catalina.sh" "run"]
+ENTRYPOINT ["catalina.sh", "start"]
